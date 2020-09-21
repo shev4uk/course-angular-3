@@ -1,0 +1,17 @@
+<div class="container">
+  <h1>{{title}} {{numberLesson}}!</h1>
+  <ul>
+    <li *ngFor="let tack of tacks">
+      {{tack}}
+    </li>
+  </ul>
+  <app-counter></app-counter>
+  <app-counter></app-counter>
+  <button (click)="dropdown()">Dropdown</button>
+  <p *ngIf="state">Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita maiores culpa quibusdam amet nesciunt. Aliquam architecto hic voluptatum labore impedit? Ab reprehenderit molestiae temporibus culpa esse recusandae repudiandae quasi minima.</p>
+</div>
+
+<div *ngFor="let post of posts">
+  <h2>{{post.title}}</h2>
+  <p>{{post.text}}</p>
+</div>
