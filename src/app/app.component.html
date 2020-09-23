@@ -1,0 +1,10 @@
+<h1>Posts</h1>
+<p>{{countPost}} posts</p>
+<div *ngFor="let post of posts">
+  <ng-container *ngIf="post.status === status['publish']">
+    <h2>{{post.title}}</h2>
+    <p>{{post.text}}</p>
+    <p>{{post.author}}</p>
+    <p>{{status[post.status]}}</p>
+  </ng-container>
+</div>
