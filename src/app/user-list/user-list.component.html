@@ -1,0 +1,3 @@
+<!-- <p>{{level}}</p> -->
+<p *ngFor="let item of userSelect; let i = index">{{i}}{{item.name}} <button (click)="deleteUser(i)">delete</button></p>
+<app-user-single *ngFor="let user of users" [userSingle]="user" (getLevel)="showLevel($event)"></app-user-single>

@@ -1,0 +1,5 @@
+<div>
+  <input type="text" [(ngModel)]="name"> {{name}}
+</div>
+<p *ngIf="count > 0">{{count}}</p>
+<app-product-item *ngFor="let product of products" [productItem]="product" (addProductItemCart)="addToCart($event)"></app-product-item>

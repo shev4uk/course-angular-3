@@ -1,0 +1,19 @@
+.user-cart {
+  border: 1px solid;
+  padding: 10px;
+  .level {
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+    border-radius: 50%;
+  }
+  .level-1 {
+    background-color: green;
+  }
+  .level-2 {
+    background-color: yellow;
+  }
+  .level-3 {
+    background-color: red;
+  }
+}

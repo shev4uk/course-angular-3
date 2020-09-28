@@ -1,0 +1,8 @@
+<div class="card" [ngClass]="{'no-stock': !productItem.isStock}">
+  <div class="card-body">
+    <h5>{{productItem.name}}</h5>
+    <p>Price: {{productItem.price}}</p>
+    <button [disabled]="!productItem.isStock">Product detail</button>
+    <button [disabled]="!productItem.isStock" class="btn btn-primary" (click)="addCart(productItem.id, productItem.name)">Add cart</button>
+  </div>
+</div>

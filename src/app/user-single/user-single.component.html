@@ -1,0 +1,6 @@
+<div class="mb-3 user-cart" (click)="onClickUser(userSingle)">
+  <img [src]="userSingle.photo" alt=""> <span class="level" 
+  [ngClass]="{'level-1': userSingle.level === 1, 'level-2': userSingle.level === 2, 'level-3': userSingle.level === 3}"></span>
+  <p>{{userSingle.name}}</p>
+  <p>{{userSingle.position}}</p>
+</div>
