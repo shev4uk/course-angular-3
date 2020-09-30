@@ -1,11 +1,27 @@
-.user-cart {
+@import '../../assets/scss/var';
+
+:host {
   border: 1px solid;
   padding: 10px;
+  display: block;
+}
+:host-context(.dark-color) {
+  .user-cart {
+    background-color: #444;
+    p {
+      color: #fff;
+    }
+  }
+}
+.user-cart {
   .level {
     width: 20px;
     height: 20px;
     display: inline-block;
     border-radius: 50%;
+  }
+  p {
+    color: $color-text;
   }
   .level-1 {
     background-color: green;

@@ -11,10 +11,13 @@ export class ProductItemComponent implements OnInit {
   @Input() productItem: Product;
   @Output() addProductItemCart = new EventEmitter();
 
+  discount: number;
+
   constructor() { }
 
   ngOnInit() {
     console.log(this.productItem);
+    this.discount = this.productItem.price - this.productItem.price * this.productItem.discount / 100;
   }
 
   addCart(id, name) {

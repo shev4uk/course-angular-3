@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-user-list',
@@ -6,6 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./user-list.component.scss']
 })
 export class UserListComponent implements OnInit {
+
+  @ViewChild('wrap', {static: false}) wrap: ElementRef;
 
   users = [{
     name: 'User 1',
@@ -33,6 +35,11 @@ export class UserListComponent implements OnInit {
   ngOnInit() {
   }
 
+  ngAfterViewInit() {
+    const wrap = this.wrap.nativeElement;
+    wrap.scrollIntoView();
+  }
+
   showLevel(event) {
     console.log(event);
     this.level = event;
@@ -41,6 +48,10 @@ export class UserListComponent implements OnInit {
 
   deleteUser(i) {
     this.userSelect.splice(i, 1);
+  }
+
+  actionUser(e) {
+    console.log(e);
   }
 
 }

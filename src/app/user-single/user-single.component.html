@@ -2,5 +2,7 @@
   <img [src]="userSingle.photo" alt=""> <span class="level" 
   [ngClass]="{'level-1': userSingle.level === 1, 'level-2': userSingle.level === 2, 'level-3': userSingle.level === 3}"></span>
   <p>{{userSingle.name}}</p>
-  <p>{{userSingle.position}}</p>
+  <p #text>{{userSingle.position}}</p>
+  <button class="button" (click)="action('delete')">Delete</button>
+  <button class="button" (click)="action('edit')">Edit</button>
 </div>

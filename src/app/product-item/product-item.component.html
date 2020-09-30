@@ -1,7 +1,18 @@
 <div class="card" [ngClass]="{'no-stock': !productItem.isStock}">
   <div class="card-body">
+    <div class="label" [ngSwitch]="productItem.label">
+      <ng-container *ngSwitchCase='0'>hit</ng-container>
+      <ng-container *ngSwitchCase='1'>action</ng-container>
+      <ng-container *ngSwitchCase='2'>hot</ng-container>
+    </div>
     <h5>{{productItem.name}}</h5>
-    <p>Price: {{productItem.price}}</p>
+    <ng-container *ngIf="productItem.discount > 0; else noDiscount">
+      <p>Price: {{discount}}</p>
+      <img src="../../assets/img/sale.png" alt="">
+    </ng-container>
+    <ng-template #noDiscount>
+      <p>Price: {{productItem.price}}</p>
+    </ng-template>
     <button [disabled]="!productItem.isStock">Product detail</button>
     <button [disabled]="!productItem.isStock" class="btn btn-primary" (click)="addCart(productItem.id, productItem.name)">Add cart</button>
   </div>
