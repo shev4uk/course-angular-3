@@ -1,0 +1,57 @@
+<h2>Format date</h2>
+<p>
+  {{ nowDate }}
+</p>
+<p>
+  {{ nowDate | date : 'medium'}}
+</p>
+<p>
+  {{ nowDate | date : 'dd LLLL yyyy HH:mm'}}
+</p>
+
+<h2>Format string</h2>
+<p>
+  {{text | slice:0:50 | uppercase }}
+</p>
+
+<h2>Format percent</h2>
+<p>
+  {{ width | percent: '0.2' }}
+</p>
+
+<h2>Format currency</h2>
+<p>
+  {{salary | currency:'CAD':'code'}}
+</p>
+
+{{product | json}}
+
+<h2>Format string</h2>
+<p>
+  {{text | sliceString:100 }}
+</p>
+
+<p>
+  {{coin | round }}
+</p>
+
+<input type="text" [(ngModel)]="searchName">{{searchName}}
+<div>
+  <input type="text" [(ngModel)]="productModel.name" placeholder="Name">
+  <input type="text" [(ngModel)]="productModel.price" placeholder="Price">
+  <button (click)="addProduct()">Add</button>
+</div>
+<table>
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Name</th>
+      <th (click)="changeOrder()">Price</th>
+    </tr>
+  </thead>
+  <tr *ngFor="let product of products | sort:order | search:searchName; let i = index;">
+    <td>{{i + 1}}</td>
+    <td>{{product.name}}</td>
+    <td>{{product.price}}</td>
+  </tr>
+</table>
