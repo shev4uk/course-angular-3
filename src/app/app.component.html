@@ -1,0 +1,8 @@
+<p appShortText>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Praesentium eveniet iure sequi cumque blanditiis possimus modi totam fugit eaque deleniti, iste doloribus voluptas, facere rerum fuga ab qui tempora eum!</p>
+<button (click)="togglePopup()">Modal</button>
+<div class="bg-modal" *ngIf="statePopUp" appClickOutside (clickOutside)="togglePopup()">
+  <div class="content-modal">
+    text
+    <button (click)="togglePopup()">close</button>
+  </div>
+</div>

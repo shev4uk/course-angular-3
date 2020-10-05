@@ -6,4 +6,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+
+  statePopUp = false;
+
+  togglePopup() {
+    this.statePopUp = !this.statePopUp;
+  }
 }
