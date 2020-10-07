@@ -1,0 +1,19 @@
+<p>form-template works!</p>
+
+<form #formSet="ngForm" (ngSubmit)="sendForm()">
+  <div>
+    <input type="text" name="name" [(ngModel)]="formSetting.name" #name="ngModel" placeholder="Name" required>
+    <div *ngIf="!(name.valid || name.pristine)">
+      Field is reqiuerd
+    </div>
+  </div>
+  <div>
+    <input type="text" name="email" [(ngModel)]="formSetting.email" #email="ngModel" placeholder="Email" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$">
+    <div *ngIf="email.errors?.pattern">
+      Field is format email
+    </div>
+  </div>
+  {{formSetting | json}} <br>
+  {{formSet.form.valid | json}}<br>
+  <input type="submit" value="Send" [disabled]="!formSet.form.valid">
+</form>

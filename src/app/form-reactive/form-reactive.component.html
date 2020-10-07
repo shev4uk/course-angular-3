@@ -1,0 +1,53 @@
+<p>form-reactive works!</p>
+
+<button (click)="setValue()">Set default values</button>
+
+<form [formGroup]="formSetting" (ngSubmit)="sendForm()">
+  <div class="form-group">
+    <input type="text" formControlName="name" placeholder="Name" [ngClass]="{'error-input': !form.name.valid && !form.name.pristine}">
+    <div>
+      <p *ngIf="form.name.errors?.required && !form.name.pristine" class="error-msg">
+        Field is required
+      </p>
+    </div>
+  </div>
+  <div class="form-group">
+    <input type="email" formControlName="email" placeholder="Email">
+    <div>
+      <p *ngIf="form.email.errors?.required && !form.email.pristine" class="error-msg">
+        Field is required
+      </p>
+      <p *ngIf="form.email.errors?.email && !form.email.pristine" class="error-msg">
+        Field is format email
+      </p>
+    </div>
+  </div>
+  <div class="form-group">
+    <select formControlName="theme" (change)="changeTheme()">
+      <option [value]="color" *ngFor="let color of themes">
+        {{color}}
+      </option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label *ngFor="let type of typeUser">
+      <input type="radio" name="type" [value]="type" formControlName="type"> {{type}}
+    </label>
+  </div>
+  <div [ngSwitch]="form.type.value">
+    <div *ngSwitchCase="'freelance'">
+      freelance
+    </div>
+    <div *ngSwitchCase="'full time'">
+      full time
+    </div>
+  </div>
+  <div class="form-group">
+    <label>
+      <input type="checkbox" formControlName="agree" required> I agree
+    </label>
+  </div>
+  {{formSetting.value | json}} <br>
+  {{formSetting.valid}} <br>
+  <input type="submit" value="Send" [disabled]="!formSetting.valid">
+</form>
