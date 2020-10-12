@@ -1,0 +1,5 @@
+<h2>Todo list</h2>
+
+<app-todo-form></app-todo-form>
+<button (click)="selectAll()">Select all</button>
+<app-todo-item *ngFor="let todo of list" [todo]="todo"></app-todo-item>

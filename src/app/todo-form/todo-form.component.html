@@ -1,0 +1,7 @@
+<form [formGroup]="formAddTodo" (ngSubmit)="addTodo()">
+  <label>
+    Text Todo
+    <input type="text" formControlName="name">
+  </label>
+  <input type="submit" value="Add" [disabled]="!formAddTodo.valid">
+</form>
