@@ -1,0 +1,9 @@
+<form [formGroup]="formAddPost" (ngSubmit)="addPost()">
+  <div>
+    <input type="text" placeholder="title" formControlName="title">
+  </div>
+  <div>
+    <textarea cols="30" rows="5" formControlName="body"></textarea>
+  </div>
+  <input type="submit" value="Send" [disabled]="!formAddPost.valid">
+</form>
