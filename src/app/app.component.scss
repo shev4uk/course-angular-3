@@ -1,0 +1,9 @@
+nav {
+  a {
+    display: inline-block;
+    margin: 0 10px;
+    &.active {
+      color: red;
+    }
+  }
+}
