@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
 import { AboutComponent } from './about/about.component';
 import { AuthComponent } from './auth/auth.component';
 import { ContactComponent } from './contact/contact.component';
@@ -7,8 +7,7 @@ import { HomeComponent } from './home/home.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { SignInComponent } from './auth/sign-in/sign-in.component';
 import { SignUpComponent } from './auth/sign-up/sign-up.component';
-import { PostListComponent } from './post/post-list/post-list.component';
-import { PostSingleComponent } from './post/post-single/post-single.component';
+import { AuthGuard } from './shared/guards/auth.guard';
 
 
 const routes: Routes = [
@@ -31,11 +30,11 @@ const routes: Routes = [
       }
     ]
   },
+  // {
+  //   path: 'post', loadChildren: import('./post/post.module').then(m => m.PostModule)
+  // },
   {
-    path: 'post', component: PostListComponent
-  },
-  {
-    path: 'post/:id', component: PostSingleComponent
+    path: 'post', loadChildren: './post/post.module#PostModule', data: { preload: true }, canActivate: [AuthGuard]
   },
   {
     path: '**', component: NotFoundComponent
@@ -46,7 +45,9 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, {
+    preloadingStrategy: PreloadAllModules
+  })],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

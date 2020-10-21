@@ -11,8 +11,7 @@ import { AuthComponent } from './auth/auth.component';
 import { SignInComponent } from './auth/sign-in/sign-in.component';
 import { SignUpComponent } from './auth/sign-up/sign-up.component';
 import { HttpClientModule } from '@angular/common/http';
-import { PostListComponent } from './post/post-list/post-list.component';
-import { PostSingleComponent } from './post/post-single/post-single.component';
+import { ButtonModule } from './shared/components/button/button.module';
 
 @NgModule({
   declarations: [
@@ -23,14 +22,13 @@ import { PostSingleComponent } from './post/post-single/post-single.component';
     NotFoundComponent,
     AuthComponent,
     SignInComponent,
-    SignUpComponent,
-    PostListComponent,
-    PostSingleComponent
+    SignUpComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    ButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]
