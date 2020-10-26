@@ -1,0 +1,16 @@
+<div class="menu" [ngClass]="{'open': openMenu}">
+  <a routerLink="/todo">
+    <mat-icon>home</mat-icon>
+  </a>
+  <nav>
+    <ul class="main-menu">
+      <li>
+        <a routerLink="/todo" class="d-flex align-items-center" title="List">
+          <mat-icon>list</mat-icon>
+          <span *ngIf="openMenu" class="menu-text">List</span>
+        </a>
+      </li>
+    </ul>
+  </nav>
+  <mat-icon (click)="toggleMenu()" class="icon-menu">arrow_forward_ios</mat-icon>
+</div>
