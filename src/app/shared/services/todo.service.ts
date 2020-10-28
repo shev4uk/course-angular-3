@@ -18,4 +18,12 @@ export class TodoService {
   getTodos(): Observable<Todo[]> {
     return this.http.get<Todo[]>(`${this.apiUrl}todos`);
   }
+
+  getTodoSingle(id: number): Observable<Todo> {
+    return this.http.get<Todo>(`${this.apiUrl}todos/${id}`);
+  }
+
+  addTodo(todo): Observable<any> {
+    return this.http.post(`${this.apiUrl}todos`, todo);
+  }
 }

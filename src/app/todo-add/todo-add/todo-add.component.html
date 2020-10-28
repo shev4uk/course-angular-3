@@ -1,0 +1,54 @@
+<form [formGroup]="formTodoAdd" (ngSubmit)="addTodo()">
+  <div class="form-group">
+    <mat-form-field class="example-full-width">
+      <mat-label>Name</mat-label>
+      <input matInput formControlName="name" placeholder="Name task">
+      <mat-error *ngIf="form.name.hasError('required')">
+        Name task is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+  </div>
+  <div class="form-group">
+    <mat-form-field class="example-full-width">
+      <mat-label>Description</mat-label>
+      <textarea matInput formControlName="description" matTextareaAutosize="true" matAutosizeMinRows="5" matAutosizeMaxRows="15" placeholder="Comment..."></textarea>
+      <mat-error *ngIf="form.description.hasError('required')">
+        Description task is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+  </div>
+  <div class="form-group">
+    <mat-form-field appearance="fill">
+      <mat-label>End date</mat-label>
+      <input matInput [matDatepicker]="picker" formControlName="endDate">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+      <mat-error *ngIf="form.endDate.hasError('required')">
+        Date task is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+  </div>
+  <div class="form-group">
+    <mat-form-field appearance="fill">
+      <mat-label>Priority task</mat-label>
+      <mat-select formControlName="priority">
+        <mat-option *ngFor="let priority of priorities" [value]="priority.id">
+          {{priority.name}}
+        </mat-option>
+      </mat-select>
+      <mat-error *ngIf="form.priority.hasError('required')">
+        Priority task is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+  </div>
+  <button mat-flat-button color="primary" >Add</button>
+</form>
+<div class="mt-3" *ngIf="successSend">
+  <div class="alert alert-success" role="alert">
+    Your task was added
+  </div>
+  <a routerLink="/todo" mat-flat-button>
+    <mat-icon>keyboard_backspace</mat-icon>
+    Back to list
+  </a>
+</div>

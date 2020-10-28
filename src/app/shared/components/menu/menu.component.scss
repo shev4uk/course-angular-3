@@ -7,7 +7,7 @@
   height: 100vh;
   display: flex;
   flex-direction: column;
-  background-color: #673ab7;
+  // background-color: #673ab7;
   transition: width .3s;
   &.open {
     width: 150px;

@@ -1,1 +1,7 @@
-<app-todo-item *ngFor="let todo of todos" [todo]="todo"></app-todo-item>
+<ng-container *ngIf="todos?.length > 0; else emptyTodo">
+  <app-todo-item *ngFor="let todo of todos" [todo]="todo"></app-todo-item>
+</ng-container>
+<ng-template #emptyTodo>
+  Not found todo
+</ng-template>
+

@@ -5,3 +5,15 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 
 @import 'assets/scss/common';
+
+@import '~@angular/material/theming';
+
+$my-theme-primary: mat-color($mat-indigo, 700);
+
+.menu {
+  background-color: $my-theme-primary;
+}
+
+//https://medium.com/@tomastrajan/the-complete-guide-to-angular-material-themes-4d165a9d24d1
+
+//https://www.npmjs.com/package/@angular-material-components/datetime-picker

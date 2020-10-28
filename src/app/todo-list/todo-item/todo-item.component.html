@@ -1,6 +1,6 @@
 <div class="todo-item shadow-sm">
   <div>
-    <h4>{{todo.name}}</h4>
+    <h4><a [routerLink]="[ '/todo', todo.id ]">{{todo.name}}</a></h4>
     <p>End Date: {{todo.endDate | date}}</p>
   </div>
   <div>
