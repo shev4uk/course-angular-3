@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
 import { TodoService } from 'src/app/shared/services/todo.service';
 
 @Component({
@@ -8,6 +8,8 @@ import { TodoService } from 'src/app/shared/services/todo.service';
   styleUrls: ['./todo-add.component.scss']
 })
 export class TodoAddComponent implements OnInit {
+
+  @ViewChild('formDirective', {static: false}) private formDirective: NgForm;
 
   formTodoAdd: FormGroup;
   successSend = false;
@@ -44,9 +46,8 @@ export class TodoAddComponent implements OnInit {
 
   addTodo() {
     this.todoService.addTodo(this.formTodoAdd.value).subscribe((res) => {
-      console.log(res);
       this.successSend = true;
-      this.formTodoAdd.reset();
+      this.formDirective.resetForm();
     });
   }
 

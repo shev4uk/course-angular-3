@@ -8,11 +8,11 @@
       <mat-icon>more_horiz</mat-icon>
     </button>
     <mat-menu #menu="matMenu">
-      <button mat-menu-item>
+      <button mat-menu-item [routerLink]="['/todo', todo.id, 'edit']">
         <mat-icon>create</mat-icon>
         <span>Edit</span>
       </button>
-      <button mat-menu-item>
+      <button mat-menu-item (click)="openDialog()">
         <mat-icon>delete</mat-icon>
         <span>Delete</span>
       </button>

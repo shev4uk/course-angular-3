@@ -10,6 +10,9 @@ const routes: Routes = [
     path: 'todo/add', loadChildren: './todo-add/todo-add.module#TodoAddModule'
   },
   {
+    path: 'todo/:id/edit', loadChildren: './todo-edit/todo-edit.module#TodoEditModule'
+  },
+  {
     path: 'todo/:id', loadChildren: './todo-single/todo-single.module#TodoSingleModule'
   },
   {

@@ -7,6 +7,8 @@ import { TodoItemComponent } from './todo-item/todo-item.component';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
+import { MatDialogModule } from '@angular/material/dialog';
+import { DialogDeleteTodoModule } from '../shared/components/dialog-delete-todo/dialog-delete-todo.module';
 
 
 @NgModule({
@@ -16,7 +18,9 @@ import { MatButtonModule } from '@angular/material/button';
     TodoListRoutingModule,
     MatMenuModule,
     MatIconModule,
-    MatButtonModule
+    MatButtonModule,
+    MatDialogModule,
+    DialogDeleteTodoModule
   ]
 })
 export class TodoListModule { }

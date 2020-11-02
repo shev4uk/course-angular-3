@@ -1,0 +1,11 @@
+.format-text {
+  white-space: pre-wrap;
+}
+.todo-single {
+  position: relative;
+  .btn-edit {
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+}

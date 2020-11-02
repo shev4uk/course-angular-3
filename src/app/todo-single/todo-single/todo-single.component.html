@@ -1,4 +1,14 @@
-<div *ngIf="todo">
+<div *ngIf="todo" class="todo-single">
   <h3>{{todo.name}}</h3>
-  <p>{{todo.description}}</p>
+  <p class="format-text">{{todo.description}}</p>
+  <p>Date create task: {{todo.createdAt | date : 'dd MMMM yyyy'}}</p>
+  <p>Deadline: {{todo.endDate | date : 'dd MMMM yyyy'}}, {{day}}hours</p>
+  <p>Priority: {{priority[todo.priority]}}</p>
+  <div>
+    <a routerLink="/todo" mat-flat-button>
+      <mat-icon>keyboard_backspace</mat-icon>
+      Back to list
+    </a>
+  </div>
+  <button routerLink="/todo/{{id}}/edit" mat-flat-button color="accent" class="btn-edit">Edit</button>
 </div>

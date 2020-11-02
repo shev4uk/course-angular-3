@@ -23,7 +23,11 @@ export class TodoService {
     return this.http.get<Todo>(`${this.apiUrl}todos/${id}`);
   }
 
-  addTodo(todo): Observable<any> {
-    return this.http.post(`${this.apiUrl}todos`, todo);
+  addTodo(todo): Observable<Todo> {
+    return this.http.post<Todo>(`${this.apiUrl}todos`, todo);
+  }
+
+  editTodo(todo, id): Observable<Todo> {
+    return this.http.put<Todo>(`${this.apiUrl}todos/${id}`, todo);
   }
 }
