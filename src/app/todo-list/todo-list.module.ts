@@ -9,6 +9,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
 import { DialogDeleteTodoModule } from '../shared/components/dialog-delete-todo/dialog-delete-todo.module';
+import { MatFormFieldModule, MatProgressBarModule } from '@angular/material';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -20,7 +22,10 @@ import { DialogDeleteTodoModule } from '../shared/components/dialog-delete-todo/
     MatIconModule,
     MatButtonModule,
     MatDialogModule,
-    DialogDeleteTodoModule
+    DialogDeleteTodoModule,
+    MatProgressBarModule,
+    MatFormFieldModule,
+    FormsModule
   ]
 })
 export class TodoListModule { }

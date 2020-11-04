@@ -1,4 +1,4 @@
-<div class="todo-item shadow-sm">
+<div class="todo-item shadow-sm" [ngClass]="'priority-'+todo.priority">
   <div>
     <h4><a [routerLink]="[ '/todo', todo.id ]">{{todo.name}}</a></h4>
     <p>End Date: {{todo.endDate | date}}</p>

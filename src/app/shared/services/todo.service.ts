@@ -15,8 +15,8 @@ export class TodoService {
     private http: HttpClient
   ) { }
 
-  getTodos(): Observable<Todo[]> {
-    return this.http.get<Todo[]>(`${this.apiUrl}todos`);
+  getTodos(options): Observable<Todo[]> {
+    return this.http.get<Todo[]>(`${this.apiUrl}todos`, {params: options});
   }
 
   getTodoSingle(id: number): Observable<Todo> {
@@ -29,5 +29,9 @@ export class TodoService {
 
   editTodo(todo, id): Observable<Todo> {
     return this.http.put<Todo>(`${this.apiUrl}todos/${id}`, todo);
+  }
+
+  deleteTodo(id: number): Observable<Todo> {
+    return this.http.delete<Todo>(`${this.apiUrl}todos/${id}`);
   }
 }

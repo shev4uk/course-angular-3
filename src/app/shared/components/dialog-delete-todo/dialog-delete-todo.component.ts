@@ -15,8 +15,12 @@ export class DialogDeleteTodoComponent implements OnInit {
   ngOnInit() {
   }
 
-  deleteIten() {
-    this.dialogRef.close({event: 'ok'});
+  deleteItem() {
+    this.dialogRef.close({event: 'delete'});
+  }
+
+  closeDialog() {
+    this.dialogRef.close();
   }
 
 }

@@ -1,7 +1,35 @@
-<ng-container *ngIf="todos?.length > 0; else emptyTodo">
-  <app-todo-item *ngFor="let todo of todos" [todo]="todo"></app-todo-item>
+<ng-container *ngIf="loader; else leading">
+  <div class="mb-4 d-flex justify-content-between">
+    <button mat-button [matMenuTriggerFor]="menu">Sort</button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item (click)="sortTodo('endDate', 'desc')">Sort date up</button>
+      <button mat-menu-item (click)="sortTodo('endDate', 'asc')">Sort date down</button>
+      <button mat-menu-item (click)="sortTodo('priority', 'desc')">Sort priority up</button>
+      <button mat-menu-item (click)="sortTodo('priority', 'asc')">Sort priority down</button>
+    </mat-menu>
+    <div>
+      <!-- <form #someForm="ngForm">
+        <mat-form-field appearance="legacy">
+          <mat-label>Seach</mat-label>
+          <input matInput placeholder="Seach" [(ngModel)]="search" name="search">
+        </mat-form-field>
+        <button mat-mini-fab aria-label="Example icon button with a home icon">
+          <mat-icon>search</mat-icon>
+        </button>
+      </form> -->
+      <input type="text" [(ngModel)]="search" name="search">
+      <button mat-mini-fab aria-label="Example icon button with a home icon" (click)="searchTodo()">
+        <mat-icon>search</mat-icon>
+      </button>
+    </div>
+  </div>
+  <ng-container *ngIf="todos?.length > 0; else emptyTodo">
+    <app-todo-item *ngFor="let todo of todos" [todo]="todo" (deleteTodo)="deleteTodo($event)"></app-todo-item>
+  </ng-container>
+  <ng-template #emptyTodo>
+    Not found todo
+  </ng-template>
 </ng-container>
-<ng-template #emptyTodo>
-  Not found todo
+<ng-template #leading>
+  <mat-progress-bar mode="indeterminate"></mat-progress-bar>
 </ng-template>
-

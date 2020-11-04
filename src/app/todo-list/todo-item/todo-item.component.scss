@@ -5,4 +5,15 @@
   margin-bottom: 30px;
   display: grid;
   grid-template-columns: auto 40px;
+  border-left-width: 5px;
+  border-left-style: solid;
+  &.priority-0 {
+    border-left-color: rgb(17, 145, 28);
+  }
+  &.priority-1 {
+    border-left-color: rgb(244, 244, 33);
+  }
+  &.priority-2 {
+    border-left-color: rgb(194, 19, 28);
+  }
 }

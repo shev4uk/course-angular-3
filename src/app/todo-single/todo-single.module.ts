@@ -3,19 +3,22 @@ import { CommonModule } from '@angular/common';
 
 import { TodoSingleRoutingModule } from './todo-single-routing.module';
 import { TodoSingleComponent } from './todo-single/todo-single.component';
-import { TodoAddComponent } from './todo-add/todo-add.component';
 
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
+import { DialogDeleteTodoModule } from '../shared/components/dialog-delete-todo/dialog-delete-todo.module';
+import { MatDialogModule } from '@angular/material';
 
 
 @NgModule({
-  declarations: [TodoSingleComponent, TodoAddComponent],
+  declarations: [TodoSingleComponent],
   imports: [
     CommonModule,
     TodoSingleRoutingModule,
     MatIconModule,
-    MatButtonModule
+    MatButtonModule,
+    MatDialogModule,
+    DialogDeleteTodoModule
   ]
 })
 export class TodoSingleModule { }
