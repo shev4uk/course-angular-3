@@ -1,30 +1,60 @@
 <ng-container *ngIf="loader; else leading">
   <div class="mb-4 d-flex justify-content-between">
-    <button mat-button [matMenuTriggerFor]="menu">Sort</button>
-    <mat-menu #menu="matMenu">
-      <button mat-menu-item (click)="sortTodo('endDate', 'desc')">Sort date up</button>
-      <button mat-menu-item (click)="sortTodo('endDate', 'asc')">Sort date down</button>
-      <button mat-menu-item (click)="sortTodo('priority', 'desc')">Sort priority up</button>
-      <button mat-menu-item (click)="sortTodo('priority', 'asc')">Sort priority down</button>
-    </mat-menu>
+    <div class="d-flex align-items-center">
+      <button mat-button [matMenuTriggerFor]="menu">Sort</button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item (click)="sortTodo('endDate', 'desc')">Sort date up</button>
+        <button mat-menu-item (click)="sortTodo('endDate', 'asc')">Sort date down</button>
+        <button mat-menu-item (click)="sortTodo('priority', 'desc')">Sort priority up</button>
+        <button mat-menu-item (click)="sortTodo('priority', 'asc')">Sort priority down</button>
+      </mat-menu>
+      <div class="change-view">
+        <mat-icon class="icon-view" (click)="changeView('list')">list</mat-icon>
+        <mat-icon class="icon-view" (click)="changeView('grid')">view_module</mat-icon>
+      </div>
+    </div>
     <div>
-      <!-- <form #someForm="ngForm">
+      <form (ngSubmit)="searchTodo()">
         <mat-form-field appearance="legacy">
           <mat-label>Seach</mat-label>
           <input matInput placeholder="Seach" [(ngModel)]="search" name="search">
         </mat-form-field>
-        <button mat-mini-fab aria-label="Example icon button with a home icon">
+        <button mat-mini-fab color="primary" aria-label="Example icon button with a home icon">
           <mat-icon>search</mat-icon>
         </button>
-      </form> -->
-      <input type="text" [(ngModel)]="search" name="search">
+      </form>
+      <!-- <input type="text" [(ngModel)]="search" name="search">
       <button mat-mini-fab aria-label="Example icon button with a home icon" (click)="searchTodo()">
         <mat-icon>search</mat-icon>
-      </button>
+      </button> -->
     </div>
   </div>
   <ng-container *ngIf="todos?.length > 0; else emptyTodo">
-    <app-todo-item *ngFor="let todo of todos" [todo]="todo" (deleteTodo)="deleteTodo($event)"></app-todo-item>
+    <div class="d-flex">
+      <div class="col-lg-8">
+        <div class="row"
+          infiniteScroll
+          [infiniteScrollDistance]="3"
+          [infiniteScrollThrottle]="50"
+          (scrolled)="onScroll()"
+          >
+          <div [ngClass]="{'col-lg-12': view === 'list', 'col-lg-4': view === 'grid'}" *ngFor="let todo of todos">
+            <app-todo-item [todo]="todo" (deleteTodo)="deleteTodo($event)"></app-todo-item>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="d-flex align-items-center justify-content-between">
+          <h5>Filters: </h5>
+          <button type="button" class="btn btn-light" (click)="clearFilter()">Clear filter</button>
+        </div>
+        <mat-radio-group aria-label="Select an option" [(ngModel)]="priorityTodo" (change)="changeFilter()">
+          <div *ngFor="let priority of priorities">
+            <mat-radio-button [value]="priority.id">{{priority.name}}</mat-radio-button>
+          </div>
+        </mat-radio-group>
+      </div>
+    </div>
   </ng-container>
   <ng-template #emptyTodo>
     Not found todo

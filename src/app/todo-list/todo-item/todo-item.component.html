@@ -2,8 +2,18 @@
   <div>
     <h4><a [routerLink]="[ '/todo', todo.id ]">{{todo.name}}</a></h4>
     <p>End Date: {{todo.endDate | date}}</p>
+    <div *ngIf="view === 'grid'">
+      <button mat-flat-button [routerLink]="['/todo', todo.id, 'edit']">
+        <mat-icon>create</mat-icon>
+        <span>Edit</span>
+      </button>
+      <button mat-flat-button (click)="openDialog()">
+        <mat-icon>delete</mat-icon>
+        <span>Delete</span>
+      </button>
+    </div>
   </div>
-  <div>
+  <div *ngIf="view === 'list'">
     <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
       <mat-icon>more_horiz</mat-icon>
     </button>

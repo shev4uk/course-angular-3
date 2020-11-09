@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { MatDialog } from '@angular/material';
+import { Subscription } from 'rxjs';
 import { DialogDeleteTodoComponent } from 'src/app/shared/components/dialog-delete-todo/dialog-delete-todo.component';
 import { Todo } from 'src/app/shared/models/todo.model';
 import { TodoService } from 'src/app/shared/services/todo.service';
@@ -11,8 +12,12 @@ import { TodoService } from 'src/app/shared/services/todo.service';
 })
 export class TodoItemComponent implements OnInit {
 
+  subscription: Subscription;
+
   @Input() todo: Todo;
   @Output() deleteTodo = new EventEmitter();
+
+  view;
 
   constructor(
     public dialog: MatDialog,
@@ -21,6 +26,9 @@ export class TodoItemComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.subscription = this.todoService.changeView.subscribe((view) => {
+      this.view = view;
+    });
   }
 
   openDialog() {
@@ -40,6 +48,10 @@ export class TodoItemComponent implements OnInit {
         );
       }
     });
+  }
+
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
   }
 
   // https://stackoverflow.com/questions/51815455/how-to-pass-data-from-angular-material-dialog-to-parent-component
