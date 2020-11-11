@@ -45,7 +45,6 @@ export class TodoEditComponent implements OnInit {
 
   getTaskById(id: number) {
     this.todoService.getTodoSingle(id).subscribe((todo) => {
-      console.log(todo);
       this.formTodoEdit.patchValue({
         name: todo.name,
         description: todo.description,

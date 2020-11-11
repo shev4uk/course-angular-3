@@ -35,16 +35,12 @@ export class TodoItemComponent implements OnInit {
     const dialogRef = this.dialog.open(DialogDeleteTodoComponent);
 
     dialogRef.afterClosed().subscribe(action => {
-      console.log(action);
       if (action.event === 'delete') {
         this.todoService.deleteTodo(this.todo.id).subscribe(
           (res) => {
-            console.log(res);
             this.deleteTodo.emit(this.todo.id);
           },
-          (err) => {
-            console.log(err);
-          }
+          (err) => {}
         );
       }
     });

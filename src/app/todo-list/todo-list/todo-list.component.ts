@@ -38,21 +38,18 @@ export class TodoListComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    console.log(this.view);
     this.todoSerive.changeView.next(this.view);
     const params = this.route.snapshot.queryParams;
     if (params.hasOwnProperty('search')) {
       this.search = params.search;
     }
     this.todoSerive.getTodos(params).subscribe((todos) => {
-      console.log(todos);
       this.loader = true;
       this.todos = todos;
     });
   }
 
   deleteTodo(id) {
-    console.log(id);
     const todoId = this.todos.findIndex((todo) => todo.id === id);
     this.todos.splice(todoId, 1);
   }
@@ -67,7 +64,6 @@ export class TodoListComponent implements OnInit {
   }
 
   searchTodo() {
-    console.log(this.search);
     this.loader = false;
     this.todoSerive.getTodos({search: this.search}).subscribe((todos) => {
       this.loader = true;
@@ -77,7 +73,6 @@ export class TodoListComponent implements OnInit {
   }
 
   changeFilter() {
-    console.log('change filter', this.priorityTodo);
     this.loader = false;
     this.todoSerive.getTodos({priority: this.priorityTodo}).subscribe((todos) => {
       this.loader = true;
@@ -104,11 +99,9 @@ export class TodoListComponent implements OnInit {
   }
 
   onScroll() {
-    console.log('scroll');
     this.page++;
     const params = {...this.route.snapshot.queryParams};
     params.page = this.page;
-    console.log(params);
     this.todoSerive.getTodos(params).subscribe((todos) => {
       this.todos = this.todos.concat(todos);
     });

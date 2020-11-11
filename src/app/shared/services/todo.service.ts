@@ -18,7 +18,6 @@ export class TodoService {
   ) { }
 
   getTodos(options): Observable<Todo[]> {
-    console.log(options);
     const params = {...options};
     if (!params.hasOwnProperty('page')) {
       params.page = 1;
